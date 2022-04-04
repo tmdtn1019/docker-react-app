@@ -1,0 +1,16 @@
+#빌더 스테이지
+FROM node:alpine as builder
+
+WORKDIR /usr/src/app
+
+ENV CHOKIDAR_USEPOLLING=true
+
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run", "build"]
+
+
